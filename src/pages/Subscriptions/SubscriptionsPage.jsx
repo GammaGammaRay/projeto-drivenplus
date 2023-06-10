@@ -15,10 +15,9 @@ export default function Subscriptions() {
     getOptions();
   }, []);
 
-  const goToPayment = (id) => {
+  const goToPayment = (id, price, image) => {
     auth.membership = id;
-    console.log(auth.membership);
-    navigate(`/subscriptions/${id}`)
+    navigate(`/subscriptions/${id}`, { state: { id, price, image } });
   };
 
   const getOptions = () => {

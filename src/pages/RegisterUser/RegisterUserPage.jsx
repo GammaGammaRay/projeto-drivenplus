@@ -69,7 +69,7 @@ export default function RegisterUser() {
           required
         />
 
-        <button>CADASTRAR</button>
+        <button type="submit">CADASTRAR</button>
       </form>
       <Link to="/">Já possuí uma conta? Entre</Link>
     </RegisterUserPageContainer>

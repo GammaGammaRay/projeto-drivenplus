@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { LoginPageContainer } from "./style";
 import { Link } from "react-router-dom";
@@ -9,7 +9,13 @@ import useAuth from "../../hooks/useAuth";
 export default function Login() {
   const [user, setUser] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth();
+  const { auth, login } = useAuth();
+
+  // useEffect(() => {
+  //   if (auth && auth.membership && auth.token) {
+  //     navigate("/home");
+  //   } else {navigate("/subscriptions")}
+  // }, [auth]);
 
   const navigate = useNavigate();
 
@@ -26,7 +32,9 @@ export default function Login() {
     api
       .userLogin(user)
       .then((response) => {
-        response.data.membership ? navigate("/home") : navigate("/subscriptions")  
+        response.data.membership
+          ? navigate("/home")
+          : navigate("/subscriptions");
         console.log(response);
         setIsLoading(false);
         login(response.data);
@@ -57,7 +65,7 @@ export default function Login() {
           value={user.password}
           onChange={handleChange}
         />
-        <button>ENTRAR</button>
+        <button type="submit">ENTRAR</button>
       </form>
       <Link to="/sign-up">Não possuí uma conta? Cadastre-se</Link>
     </LoginPageContainer>

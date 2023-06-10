@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 
 function SubscriptionOption({ id, price, image, setSelectedPlan }) {
   return (
-    <OptionButton onClick={() => setSelectedPlan(id)}>
+    <OptionButton onClick={() => setSelectedPlan(id, price, image)}>
       <img src={image} alt={`planImg${id}`} />
       <h2>R$ {price}</h2>
     </OptionButton>

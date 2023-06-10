@@ -19,8 +19,20 @@ body {
     background-color: black;
   }
 
-  h1{
-
+  input {
+    background: #ffffff;
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    height: 45px;
+    margin-bottom: 25px;
+    margin-top: 10px;
+    padding: 0 10px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    &::placeholder {
+      color: #7e7e7e;
+    }
   }
 `;
 

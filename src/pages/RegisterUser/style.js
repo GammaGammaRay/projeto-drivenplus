@@ -42,20 +42,5 @@ export const RegisterUserPageContainer = styled.div`
       background-color: lightgray;
     }
   }
-  input {
-    background: #ffffff;
-    border: 1px solid #d5d5d5;
-    border-radius: 3px;
-    height: 45px;
-    margin-bottom: 25px;
-    margin-top: 10px;
-    padding: 0 10px;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    &::placeholder {
-      /* font-style: italic; */
-      color: #7e7e7e;
-    }
-  }
+  
 `;
