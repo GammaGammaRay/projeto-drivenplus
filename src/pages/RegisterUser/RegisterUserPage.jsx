@@ -8,7 +8,6 @@ import ReactInputMask from "react-input-mask";
 export default function RegisterUser() {
   const navigate = useNavigate();
 
-  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     name: "",
@@ -16,31 +15,19 @@ export default function RegisterUser() {
     password: "",
   });
 
-  // const [confirmPassword, setConfirmPassword] = useState('');
-
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
-  // function checkConfirmPassword(e) {
-  //   setConfirmPassword(e.target.value);
-  //   return e.target.value === formData.password;
-  // }
-
-  //qual a diferença entre declarar função como const variável arrow-function ou só function?
   const handleNewUserRegistration = (e) => {
-    e.preventDefault(); //porque o intellisense não completa o preventDefault()?
-    setIsLoading(true);
+    e.preventDefault();
 
     function registerSuccess() {
       console.log(formData);
-      setIsLoading(false);
       navigate("/");
     }
 
-    function registerFailure() {
-      setIsLoading(false);
-    }
+    function registerFailure() {}
 
     api.userRegister(formData, registerSuccess, registerFailure);
   };
@@ -81,18 +68,6 @@ export default function RegisterUser() {
           onChange={handleChange}
           required
         />
-        {/* <input
-          placeholder="Confirmar Senha"
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => checkConfirmPassword(e)}
-          required
-        />
-        {checkConfirmPassword() ? (
-          <span>Senhas são iguais</span>
-        ) : (
-          <span>Senhas não são iguais</span>
-        )} */}
 
         <button>CADASTRAR</button>
       </form>

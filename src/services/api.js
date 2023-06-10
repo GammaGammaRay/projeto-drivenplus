@@ -7,19 +7,16 @@ const URL_SIGNUP =
 const URL_MEMBERSHIPS =
   "https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships";
 
-function createToken(token) {
+function createHeader(token) {
   return { headers: { Authorization: `Bearer ${token}` } };
 }
 
-function userLogin(obj, callbackSuccess, callbackFailure) {
-  axios
-    .post(URL_LOGIN, obj)
-    .then(({ data }) => callbackSuccess(data)) //desestruturação + arrowfunction + função passada como parâmetro?
-    .catch((error) => {
-      console.log(error);
-      alert(error.response.data.message);
-      callbackFailure();
-    });
+function getSubscriptions(token) {
+  return axios.get(URL_MEMBERSHIPS, createHeader(token))
+}
+
+function userLogin(obj) {
+  return axios.post(URL_LOGIN, obj);
 }
 
 function userRegister(obj, callbackSuccess, callbackFailure) {
@@ -33,10 +30,10 @@ function userRegister(obj, callbackSuccess, callbackFailure) {
     });
 }
 
-// porque "export default const api" não funciona?
 const api = {
   userLogin,
   userRegister,
+  getSubscriptions
 };
 
 export default api;

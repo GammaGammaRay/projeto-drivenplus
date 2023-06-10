@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+//porque o prettier não funciona aqui?
 
 const GlobalStyle = createGlobalStyle`
 
@@ -11,11 +12,15 @@ input[type="password"] {
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
+	  font-family: 'Roboto', sans-serif;
     height: 100%;
     width: 100%;
     color: white;
     background-color: black;
+  }
+
+  h1{
+
   }
 `;
 

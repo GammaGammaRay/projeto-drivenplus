@@ -9,7 +9,7 @@ import useAuth from "../../hooks/useAuth";
 export default function Login() {
   const [user, setUser] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
-  const { auth, login } = useAuth();
+  const { login } = useAuth();
 
   const navigate = useNavigate();
 
@@ -23,16 +23,18 @@ export default function Login() {
     setIsLoading(true);
     setUser(user.email, user.password);
 
-    function loginSuccess() {
-      navigate("/subscriptions");
-      setIsLoading(false);
-    }
-
-    function loginFailure() {
-      setIsLoading(false);
-    }
-
-    api.userLogin(user, loginSuccess, loginFailure);
+    api
+      .userLogin(user)
+      .then((response) => {
+        response.data.membership ? navigate("/home") : navigate("/subscriptions")  
+        console.log(response);
+        setIsLoading(false);
+        login(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+      });
   }
 
   return (
