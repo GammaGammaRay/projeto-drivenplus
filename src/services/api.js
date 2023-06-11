@@ -23,12 +23,13 @@ function getSubscriptions(token) {
   return axios.get(URL_MEMBERSHIPS, createHeader(token));
 }
 
-function setUserSubscription(token, obj) {
-  return axios.post(URL_MEMBERSHIPSIGNUP, createHeader(token), obj);
+function sendUserSubscription(token, obj) {
+  console.log(createHeader(token))
+  return axios.post(URL_MEMBERSHIPSIGNUP, obj, createHeader(token));
 }
 
 function getMembershipData(token, id) {
-  console.log({id})
+  console.log({ id });
   return axios.get(`${URL_GETMEMBERSHIPDATA}${id}`, createHeader(token));
 }
 
@@ -52,6 +53,8 @@ const api = {
   userRegister,
   getSubscriptions,
   getMembershipData,
+  sendUserSubscription,
+  createHeader
 };
 
 export default api;

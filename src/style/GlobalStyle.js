@@ -23,7 +23,7 @@ body {
     background: #ffffff;
     border: 1px solid #d5d5d5;
     border-radius: 8px;
-    height: 45px;
+    height: 55px;
     margin-bottom: 25px;
     margin-top: 10px;
     padding: 0 10px;
@@ -31,6 +31,7 @@ body {
     display: flex;
     align-items: center;
     &::placeholder {
+      font-size: 1em;
       color: #7e7e7e;
     }
   }

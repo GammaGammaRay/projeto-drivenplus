@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import useAuth from "../../hooks/useAuth";
 
 function HomePage() {
-  return (
-    <h1>Home</h1>
-  )
+  const { auth, subscription } = useAuth();
+  console.log(subscription)
+  return <h1>Home</h1>;
 }
 
-export default HomePage
+export default HomePage;
