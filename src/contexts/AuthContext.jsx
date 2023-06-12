@@ -4,9 +4,10 @@ export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const persistedAuth = JSON.parse(localStorage.getItem("auth"));
+  const persistedSubscription = JSON.parse(localStorage.getItem("subscription"));
 
   const [auth, setAuth] = useState(persistedAuth);
-  const [subscription, setSubscription] = useState({});
+  const [subscription, setSubscription] = useState(persistedSubscription);
 
 
   function login(authData) {
@@ -16,6 +17,7 @@ export default function AuthProvider({ children }) {
 
   function updateSubscription(subscriptionData) {
     setSubscription(subscriptionData);
+    localStorage.setItem("subscription", JSON.stringify(subscriptionData));
   }
 
   return (

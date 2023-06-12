@@ -65,7 +65,7 @@ function PaymentPage() {
   return (
     <PaymentPageDiv>
       <MembershipContainer>
-        <img src={image} alt="" />
+        <img src={image} alt={`subcriptionLogo${id}`} />
         <h1>{membership.name}</h1>
         <MembershipInfoContainer>
           <h2>Benefícios:</h2>
