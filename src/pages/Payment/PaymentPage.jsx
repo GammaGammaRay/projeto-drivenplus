@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import api from "../../services/api";
 import ReactInputMask from "react-input-mask";
 import ReactModal from "react-modal";
+import { Icon } from "@iconify-icon/react";
 
 function PaymentPage() {
   const [userCard, setUserCard] = useState({
@@ -68,7 +69,8 @@ function PaymentPage() {
         <img src={image} alt={`subcriptionLogo${id}`} />
         <h1>{membership.name}</h1>
         <MembershipInfoContainer>
-          <h2>Benefícios:</h2>
+          
+          <h2><StyledIcon icon="ph:clipboard-text-bold"/>Benefícios:</h2>
           <br />
           <ol type="1">
             {membership.perks &&
@@ -77,7 +79,8 @@ function PaymentPage() {
               ))}
           </ol>
           <br />
-          <h2>Preço:</h2>
+          
+          <h2><StyledIcon icon="ph:money-bold"/>Preço:</h2>
           <br />
           R$ {membership.price} cobrados mensalmente
         </MembershipInfoContainer>
@@ -185,7 +188,10 @@ const PaymentPageDiv = styled.div`
     justify-content: center;
   }
   h2 {
+    font-size: 20px;
     margin: 4px 0px 4px 0px;
+    display: flex;
+
   }
 
   input {
@@ -242,6 +248,10 @@ const MembershipInfoContainer = styled.div`
     list-style: inside;
     list-style-type: decimal;
   }
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+  }
 `;
 
 const ConfirmButtons = styled.div`
@@ -275,3 +285,9 @@ const ConfirmButtons = styled.div`
     }
   }
 `;
+
+const StyledIcon = styled(Icon)`
+  font-size: inherit;
+  font-weight: inherit;
+  margin-right: 8px;
+`
